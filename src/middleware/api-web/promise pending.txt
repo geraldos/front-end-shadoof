@@ -1,0 +1,128 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="">
+<title>Uk cuy</title>
+
+</head>
+
+<body bgcolor="whitegrey">
+<center><h2>SISTEM gatau ah</h2>
+<ul type="disc"><br>
+<li><a href="#">Data Pemetaan</a></li></center>
+</ul>
+
+<div id="map" style="width: 600px; height: 400px;"></div>
+<!-- <script src="api.js"></script> -->
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+crossorigin=""></script>
+
+<script>
+
+var map = L.map('map').setView([-5.369284, 105.224525], 12);
+L.tileLayer('http://vectormap.pptik.id/styles/klokantech-basic/{z}/{x}/{y}.png', {
+minZoom: 18,
+maxZoom: 18,
+attribution: '&copy; <a href="https://vectormap.pptik.id">PPTIK</a>'
+}).addTo(map);
+
+var markers = []
+// $.ajax({
+//     type: "GET",
+// 	url: 'http://localhost:5100/kordinat/get',
+// 	dataType: 'json',
+// 	success: function (response) {
+// 		// L.geoJSON(response).addTo(mymap);
+//     // console.log(response)
+//     markers=response
+// 	}
+// });
+
+const ma = () => {
+  let asdf
+  return new Promise((resolve, reject) => {
+    let data = fetch('http://localhost:5100/kordinat/get')
+    .then(function (res) {
+      res.json()
+        .then(function (res) {
+          console.log(res)
+        })
+    })
+  })
+}
+console.log(ma())
+
+// markers = [
+//     {
+//       "name": "Lahan Milik Pak Budi",
+//       "lat": -5.369284,
+//       "lng": 105.224525
+//     },
+//     {
+//       "name": "Lahan Milik Pak Budi",
+//       "lat": -5.369205,
+//       "lng": 105.224932
+//     },
+//     {
+//       "name": "Lahan Milik Pak Budi",
+//       "lat": -5.368876,
+//       "lng": 105.224902
+//     }
+//  ];
+
+// var marker = L.marker([-5.369284, 105.224525]).addTo(map);
+// var marker1 = L.marker([-5.369205, 105.224932]).addTo(map);
+// var marker = L.marker([-5.368876, 105.224902]).addTo(map);
+
+// var pointA = new L.LatLng(-5.369284, 105.224525);
+// var pointB = new L.LatLng(-5.369205, 105.224932);
+// var pointC = new L.LatLng(-5.368876, 105.224902);
+// var pointD = new L.LatLng(-5.369051, 105.224772);
+// var pointE = new L.LatLng(-5.369284, 105.224525);
+// var pointList = [pointA, pointB,pointC,pointD,pointE];
+// var firstpolyline = new L.Polyline(pointList, {
+// color: 'red',
+// weight: 3,
+// opacity: 0.5,
+// smoothFactor: 1
+// });
+// firstpolyline.addTo(map);
+
+let arr = []
+let lastPoint
+for ( var i=0; i < markers.length; ++i ) 
+{
+  var point = new L.LatLng(markers[i].lat, markers[i].lng);
+  arr.push(point)
+  // console.log(markers.length === (i+1))
+  if (arr.length === (i+ 1)) {
+    lastPoint = new L.LatLng(markers[0].lat, markers[0].lng)
+  }
+
+   L.marker( [markers[i].lat, markers[i].lng] )
+   .bindPopup( '<a>' + markers[i].name + '</a>')
+      .addTo( map );
+}
+arr.push(lastPoint)
+var firstpolyline = new L.Polyline(arr, {
+color: 'red',
+weight: 3,
+opacity: 0.5,
+smoothFactor: 1
+});
+firstpolyline.addTo(map);
+
+// var popup = marker.bindPopup('<b>Lahan Milik Pak Budi</b><br />Lahan Pertanian Padi');
+// popup.openPopup();
+// var popup1 = marker1.bindPopup('<b>Lahan Milik Pak Budi</b><br />Lahan Pertanian Padi');
+// popup1.openPopup();
+</script>
+
+</body>
+</html>

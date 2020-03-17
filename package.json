@@ -1,0 +1,65 @@
+{
+  "name": "geraldo",
+  "version": "0.0.1",
+  "description": "Website Admin untuk Kebun Iot",
+  "productName": "Shadoof",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "geraldos <grldospdwjy@gmail.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@feathersjs/feathers": "^3.3.1",
+    "@quasar/extras": "^1.0.0",
+    "@vue/babel-preset-app": "^3.9.2",
+    "amqp": "^0.2.7",
+    "amqplib": "^0.5.5",
+    "apexcharts": "^3.8.3",
+    "axios": "^0.18.1",
+    "chart.js": "^2.8.0",
+    "leaflet": "^1.6.0",
+    "leaflet.markercluster": "^1.4.1",
+    "mapbox-gl": "^1.8.1",
+    "mongodb": "^3.5.3",
+    "mqtt": "^3.0.0",
+    "qs": "^6.9.1",
+    "quasar": "^1.0.0",
+    "sass": "^1.26.2",
+    "socket.io": "^2.2.0",
+    "trend": "^0.3.0",
+    "vue-apexcharts": "^1.4.0",
+    "vue-chart.js": "^0.2.0",
+    "vue-chartjs": "^3.4.2",
+    "vue-good-table": "^2.19.0",
+    "vue-i18n": "^8.0.0",
+    "vue-qrcode-reader": "^2.1.1",
+    "vue-qriously": "^1.1.1",
+    "vue-stomp": "0.0.5",
+    "vue-websocket": "^0.2.3",
+    "vue2": "^1.0.0",
+    "vue2-leaflet": "^2.5.2",
+    "worker-thread": "^1.1.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.5.8",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
+}
